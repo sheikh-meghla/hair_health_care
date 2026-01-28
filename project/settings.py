@@ -39,8 +39,10 @@ INSTALLED_APPS = [
 
     'apps.user',
     'apps.landing_page',
+    'apps.chatbot',
     'rest_framework',
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -125,6 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 UNFOLD = {
