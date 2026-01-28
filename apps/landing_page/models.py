@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class HeroSection(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=200)
