@@ -1,12 +1,21 @@
+# landing_page/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
+from .models import (
+    HeroSection,
+    HowItWorks,
+    WhyHairiSafeExists,
+    Features,
+    TrustAndTransparency,
+    TakeTheGuessworkOutOfHairCare,
+    FooterSection
+)
+
 from .serializers import (
-    FooterSectionAdminSerializer,
     HeroSectionAdminSerializer,
     HowItWorksAdminSerializer,
-    TakeTheGuessworkOutOfHairCareAdminSerializer,
     WhyHairiSafeExistsAdminSerializer,
     FeaturesAdminSerializer,
     TrustAndTransparencyAdminSerializer,
@@ -14,85 +23,78 @@ from .serializers import (
     FooterSectionAdminSerializer
 )
 
+# Hero Section API
 class HeroSectionAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        hero_sections = HeroSectionAdminSerializer.objects.all()
+        hero_sections = HeroSection.objects.all()
         serializer = HeroSectionAdminSerializer(hero_sections, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
-    
+        return Response({"status": "success", "data": serializer.data})
+
+
+# How It Works API
 class HowItWorksAdminAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        how_it_works = HowItWorksAdminSerializer.objects.all()
+        how_it_works = HowItWorks.objects.all()
         serializer = HowItWorksAdminSerializer(how_it_works, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
-    
+        return Response({"status": "success", "data": serializer.data})
+
+
+# Why HairiSafe Exists API
 class WhyHairiSafeExistsAdminAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        why_hairisafe_exists = WhyHairiSafeExistsAdminSerializer.objects.all()
+        why_hairisafe_exists = WhyHairiSafeExists.objects.all()
         serializer = WhyHairiSafeExistsAdminSerializer(why_hairisafe_exists, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
-    
+        return Response({"status": "success", "data": serializer.data})
+
+
+# Features API
 class FeaturesAdminAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        features = FeaturesAdminSerializer.objects.all()
+        features = Features.objects.all()
         serializer = FeaturesAdminSerializer(features, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
-    
+        return Response({"status": "success", "data": serializer.data})
+
+
+# Trust & Transparency API
 class TrustAndTransparencyAdminAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
-        trust_and_transparency = TrustAndTransparencyAdminSerializer.objects.all()
+        trust_and_transparency = TrustAndTransparency.objects.all()
         serializer = TrustAndTransparencyAdminSerializer(trust_and_transparency, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
+        return Response({"status": "success", "data": serializer.data})
 
+
+# Take The Guesswork Out Of Hair Care API
 class TakeTheGuessworkOutOfHairCareAdminAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
+
     def get(self, request):
-        take_the_guesswork_out_of_hair_care = TakeTheGuessworkOutOfHairCareAdminSerializer.objects.all()
-        serializer = TakeTheGuessworkOutOfHairCareAdminSerializer(take_the_guesswork_out_of_hair_care, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
-    
+        items = TakeTheGuessworkOutOfHairCare.objects.all()
+        serializer = TakeTheGuessworkOutOfHairCareAdminSerializer(items, many=True)
+        return Response({"status": "success", "data": serializer.data})
+
+
+# Footer Section API
 class FooterSectionAdminAPIView(APIView):
     permission_classes = []
     authentication_classes = [JWTAuthentication]
+
     def get(self, request):
-        footer_sections = FooterSectionAdminSerializer.objects.all()
+        footer_sections = FooterSection.objects.all()
         serializer = FooterSectionAdminSerializer(footer_sections, many=True)
-        return Response({
-            "status" : "success",
-            "data" : serializer.data
-        })
-    
+        return Response({"status": "success", "data": serializer.data})

@@ -1,5 +1,5 @@
-from rest_framework import  serializers
-from apps.landing_page.models import Features, FooterSection, HeroSection, HowItWorks, TakeTheGuessworkOutOfHairCare, TrustAndTransparency, WhyHairiSafeExists
+from rest_framework import serializers
+from .models import Features, FooterSection, HeroSection, HowItWorks, TakeTheGuessworkOutOfHairCare, TrustAndTransparency, WhyHairiSafeExists
 
 class HeroSectionAdminSerializer(serializers.ModelSerializer):
     class Meta:
