@@ -1,7 +1,6 @@
 from pathlib import Path
-from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-
+from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -127,3 +126,70 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+UNFOLD = {
+    "SIDEBAR": {
+        "show_search": False,  # Search in applications and models names
+        "command_search": False,  # Replace the sidebar search with the command search
+        "show_all_applications": False,  # Dropdown with all applications and models
+        "navigation": [
+            {
+                "title": _("User Management"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("User Dashboard"),
+                        "icon": "user_attributes",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:user_customuser_changelist"),
+                    },
+                   
+                ],
+            },
+             {
+                "title": _("Landing Page Management"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Hero Sections"),
+                        "icon": "domino_mask",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:landing_page_herosection_changelist"),
+                    },
+                   {
+                        "title": _("How It Works Sections"),
+                        "icon": "handyman",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:landing_page_howitworks_changelist"),
+                   }
+                     ,
+                     {
+                            "title": _("Why HairiSafe Exists "),
+                            "icon": "help_outline",  # Supported icon set: https://fonts.google.com/icons
+                            "link": reverse_lazy("admin:landing_page_whyhairisafeexists_changelist"),
+                     },
+                     {  
+                        "title": _("Features Sections"),
+                        "icon": "star",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:landing_page_features_changelist"),
+                     },
+                        {
+                            "title": _("Trust And Transparency "),
+                            "icon": "verified_user",  # Supported icon set: https://fonts.google.com/icons
+                            "link": reverse_lazy("admin:landing_page_trustandtransparency_changelist"),
+                        },
+                       {
+                            "title": _("Take The Guesswork Out Of Hair Care"),
+                            "icon": "help_center",  # Supported icon set: https://fonts.google.com/icons
+                            "link": reverse_lazy("admin:landing_page_taketheguessworkoutofhaircare_changelist"),
+                        },
+                          {
+                             "title": _("Footer Sections"),
+                             "icon": "bottom_navigation",  # Supported icon set: https://fonts.google.com/icons
+                             "link": reverse_lazy("admin:landing_page_footersection_changelist"),
+                            },
+                    
+                ],
+            },
+        ],
+    },
+}
